@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
+    <title>Product Edit</title>
+</head>
+
+<body>
+
+    <%- include("public/header.ejs")%>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <%- include("public/aslideLeft.ejs")%>
+            </div>
+            <div class="col-sm-10">
+                <ol class="breadcrumb">
+                    <li class="active"> 商品管理</li>
+                    <li class="active"> &nbsp; / &nbsp;</li>
+                    <li class="active"> 商品修改</li>
+                </ol>
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <div class="panel-heading">修改商品</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form action="/doProductEdit" method="POST" enctype="multipart/form-data">
+
+                            <input type="hidden" name="_id" value="<%=list._id%>">
+                            <input type="hidden" name="pic" value="<%=list.pic%>">
+
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-2 col-form-label">商品名称：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="title" id="title" value="<%=list.title%>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="pic" class="col-sm-2 col-form-label">商品图片：</label>
+                                <div class="col-sm-4">
+                                    <input type="file" name="pic" id="pic">
+                                    <img width=100 src="<%=list.pic%>" alt="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="price" class="col-sm-2 col-form-label">商品价格：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="price"  id="price" value="<%=list.price%>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="shipping" class="col-sm-2 col-form-label">商品邮费：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" name="shipping"  id="shipping" value="<%=list.shipping%>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-2 col-form-label">商品描述：</label>
+                                <div class="col-sm-4">
+                                    <textarea name="description" id="" cols="60" rows="8"><%=list.description%></textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">提交</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

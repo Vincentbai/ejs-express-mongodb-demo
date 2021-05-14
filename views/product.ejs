@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
+    <title>Product</title>
+</head>
+
+<body>
+
+    <%- include("public/header.ejs")%>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <%- include("public/aslideLeft.ejs")%>
+            </div>
+            <div class="col-sm-10">
+                <ol class="breadcrumb">
+                    <li class="active"> 商品管理</li>
+                    <li class="active"> &nbsp; / &nbsp;</li>
+                    <li class="active"> 商品列表</li>
+                </ol>
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <div class="panel-heading">搜索</div>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline">
+                            <div class="form-group mb-2">
+                              <label class="form-control-plaintext">名称:</label>
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                              <label for="inputPassword2" class="sr-only">Password</label>
+                              <input type="password" class="form-control" id="inputPassword2" placeholder="请输入名称">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">开始搜索</button>
+                          </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>图标</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                                <th>邮费</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<list.length;i++) {%>
+                                <tr>
+                                    <td><%=i+1%></td>
+                                    <td><img width=50 src="<%=list[i].pic%>" alt=""></td>
+                                    <td><%=list[i].title%></td>
+                                    <td><%=list[i].price%>元</td>
+                                    <td><%=list[i].shipping%>元</td>
+                                    <td class="text-center"> 
+                                        <a class="btn btn-success" href="/productEdit?id=<%=list[i]._id%>">修改</a> &nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" href="/productDelete?id=<%=list[i]._id%>">删除</a>
+                                    </td>
+                                </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
