@@ -10,12 +10,12 @@
 
 <body>
 
-    <%- include("public/header.ejs")%>
+    <%- include("../public/header.ejs")%>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
-                <%- include("public/aslideLeft.ejs")%>
+                <%- include("../public/aslideLeft.ejs")%>
             </div>
             <div class="col-sm-10">
                 <ol class="breadcrumb">
@@ -57,13 +57,13 @@
                             <% for(var i=0; i<list.length;i++) {%>
                                 <tr>
                                     <td><%=i+1%></td>
-                                    <td><img width=50 src="<%=list[i].pic%>" alt=""></td>
+                                    <td><img width=50 src="/<%=list[i].pic%>" alt=""></td>
                                     <td><%=list[i].title%></td>
                                     <td><%=list[i].price%>元</td>
                                     <td><%=list[i].shipping%>元</td>
                                     <td class="text-center"> 
-                                        <a class="btn btn-success" href="/productEdit?id=<%=list[i]._id%>">修改</a> &nbsp;&nbsp;&nbsp;
-                                        <a class="btn btn-danger" href="/productDelete?id=<%=list[i]._id%>">删除</a>
+                                        <a class="btn btn-success" href="/admin/product/edit?id=<%=list[i]._id%>">修改</a> &nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-danger" href="/admin/product/delete?id=<%=list[i]._id%>">删除</a>
                                     </td>
                                 </tr>
                             <%}%>

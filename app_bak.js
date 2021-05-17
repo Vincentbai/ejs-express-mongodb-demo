@@ -255,7 +255,6 @@ app.get('/logout',(req, res)=>{
             res.redirect('/login')
         }
     })
-
 })
 
 app.listen(5002, '127.0.0.1')
